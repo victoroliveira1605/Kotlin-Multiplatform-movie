@@ -1,4 +1,4 @@
-TEAM_ID=
+TEAM_ID=F575BRYK3H
 
 PRODUCT_NAME=KotlinMovie
 PRODUCT_BUNDLE_IDENTIFIER=br.com.victorhgo.kotlinmovie.KotlinMovie$(TEAM_ID)
