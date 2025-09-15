@@ -107,5 +107,3 @@ composeApp/src/commonMain/kotlin/
 - ✅ Carregamento de imagens otimizado
 
 ---
-
-Desenvolvido com ❤️ usando [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html)
