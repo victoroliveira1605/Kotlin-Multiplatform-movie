@@ -1,35 +1,111 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# KotlinMovie 🎬
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+Um aplicativo de catálogo de filmes desenvolvido com **Kotlin Multiplatform** que funciona nativamente no Android e iOS, compartilhando código e UI através do Compose Multiplatform.
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## 📱 Screenshots
 
-### Build and Run Android Application
+### Android
+<div align="center">
+  <img src="prints/Android-movie-list.png" alt="Android - Lista de Filmes" width="300"/>
+  <img src="prints/Android-movie-detail.png" alt="Android - Detalhes do Filme" width="300"/>
+</div>
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+### iOS
+<div align="center">
+  <img src="prints/Ios-movie-list.png" alt="iOS - Lista de Filmes" width="300"/>
+  <img src="prints/Ios-movie-detail.png" alt="iOS - Detalhes do Filme" width="300"/>
+</div>
 
-### Build and Run iOS Application
+## 🏗️ Arquitetura
 
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+O projeto segue os princípios da **Clean Architecture** com separação clara de responsabilidades:
+
+```
+composeApp/src/commonMain/kotlin/
+├── data/                    # Camada de Dados
+│   ├── mapper/             # Mappers para conversão de dados
+│   ├── network/            # Cliente HTTP e modelos de rede
+│   └── repository/         # Implementação dos repositórios
+├── domain/                 # Camada de Domínio
+│   └── model/              # Modelos de domínio
+├── ui/                     # Camada de Apresentação
+│   ├── components/         # Componentes reutilizáveis
+│   ├── navigation/         # Navegação da aplicação
+│   └── screen/            # Telas e ViewModels
+├── design_system/          # Sistema de Design
+│   ├── colors/            # Paleta de cores
+│   ├── text_styles/       # Tipografia
+│   └── theme/             # Tema da aplicação
+├── di/                    # Injeção de Dependência
+└── utils/                 # Utilitários
+```
+
+### Camadas da Arquitetura
+
+- **UI Layer**: Compose Multiplatform com ViewModels e componentes reutilizáveis
+- **Domain Layer**: Modelos de domínio e regras de negócio
+- **Data Layer**: Repositórios, mappers e cliente de rede
+- **DI Layer**: Configuração de injeção de dependência com Koin
+
+## 🛠️ Tecnologias Utilizadas
+
+### Core
+- **Kotlin Multiplatform** - Compartilhamento de código entre plataformas
+- **Compose Multiplatform** - UI declarativa compartilhada
+- **Kotlin Coroutines** - Programação assíncrona
+
+### Arquitetura & DI
+- **Clean Architecture** - Separação de responsabilidades
+- **MVVM Pattern** - Padrão de apresentação
+- **Koin** - Injeção de dependência
+
+### Networking
+- **Ktor Client** - Cliente HTTP multiplataforma
+- **Kotlinx Serialization** - Serialização JSON
+- **OkHttp** (Android) / Darwin (iOS) - Engines HTTP
+
+### UI & Design
+- **Material 3** - Design system
+- **Navigation Compose** - Navegação declarativa
+- **Coil** - Carregamento de imagens
+- **Font Awesome Icons** - Ícones
+
+### Outras
+- **Kotlinx DateTime** - Manipulação de datas
+- **Gradle Version Catalog** - Gerenciamento de dependências
+
+## 🚀 Como Executar
+
+### Android
+```bash
+# macOS/Linux
+./gradlew :composeApp:assembleDebug
+
+# Windows
+.\gradlew.bat :composeApp:assembleDebug
+```
+
+### iOS
+1. Abra o projeto no Xcode: `iosApp/iosApp.xcodeproj`
+2. Execute o projeto através do Xcode
+
+## 📁 Estrutura do Projeto
+
+- **`/composeApp`** - Código compartilhado entre Android e iOS
+  - `commonMain` - Código comum para todas as plataformas
+  - `androidMain` - Código específico do Android
+  - `iosMain` - Código específico do iOS
+- **`/iosApp`** - Aplicativo iOS nativo (SwiftUI)
+
+## 🎯 Funcionalidades
+
+- ✅ Lista de filmes populares
+- ✅ Detalhes do filme selecionado
+- ✅ Elenco e informações técnicas
+- ✅ Interface responsiva e moderna
+- ✅ Navegação fluida entre telas
+- ✅ Carregamento de imagens otimizado
 
 ---
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+Desenvolvido com ❤️ usando [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html)
