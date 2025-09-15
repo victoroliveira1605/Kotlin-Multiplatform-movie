@@ -225,29 +225,6 @@ fun MovieDetailContent(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            ElevatedButton(
-                onClick = {
-
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-            ) {
-                Icon(
-                    imageVector = FontAwesomeIcons.Solid.Play,
-                    contentDescription = null,
-                    modifier = Modifier.size(12.dp)
-                )
-
-                Text(
-                    text = stringResource(Res.string.movies_detail_watch_trailer),
-                    modifier = Modifier.padding(start = 16.dp),
-                    fontWeight = FontWeight.Medium,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
-
-
             movie.castMembers?.let { castMembers ->
                 Spacer(modifier = Modifier.height(16.dp))
 
